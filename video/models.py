@@ -1,21 +1,9 @@
 import datetime
-from typing import Optional
-
 import ormar
-from db import metadata, database
+from typing import Optional, Union, Dict, List
+from db import MainMeta
 
-
-class MainMeta(ormar.ModelMeta):
-    metadata = metadata
-    database = database
-
-
-class User(ormar.Model):
-    class Meta(MainMeta):
-        pass
-
-    id: int = ormar.Integer(primary_key=True)
-    username: str = ormar.String(max_length=50)
+from user.models import User
 
 
 class Video(ormar.Model):
@@ -27,4 +15,4 @@ class Video(ormar.Model):
     description: str = ormar.String(max_length=500)
     file: str = ormar.String(max_length=1000)
     create_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.now())
-    user: Optional[User, int, None] = ormar.ForeignKey(User)
+    user: Optional[User] = ormar.ForeignKey(User)

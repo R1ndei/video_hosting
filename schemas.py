@@ -13,11 +13,15 @@ class User(BaseModel):
     username: str
 
 
-class GetVideo(BaseModel):
-    user: User
+class Message(BaseModel):
+    message: str
+
+
+class GetListVideo(BaseModel):
+    id: int
     title: str
     description: str
 
 
-class Message(BaseModel):
-    message: str
+class GetVideo(GetListVideo):
+    user: User
