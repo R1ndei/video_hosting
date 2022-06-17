@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 from db import database, metadata, engine
+
+from followers.api import follower_router
 from video.api import video_router
-from user.routers import user_router
+from user.api import user_router
+
 
 app = FastAPI()
+
 metadata.create_all(engine)
 app.state.database = database
 
@@ -22,5 +26,6 @@ async def shutdown() -> None:
         await database_.disconnect()
 
 
-app.include_router(video_router)
 app.include_router(user_router)
+app.include_router(video_router)
+app.include_router(follower_router)
