@@ -1,7 +1,7 @@
 ## VIDEO HOSTING API
 
 This is a REST API for a Video hosting service built for fun and learning with FastAPI, Ormar and Sqlite3.
-![nice](https://ibb.co/6JnH63W)
+
 
 ## ROUTES TO IMPLEMENT
 
